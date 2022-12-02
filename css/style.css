@@ -33,3 +33,143 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
 }
+
+main {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+.unbutton {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+FRAME
+*/
+.frame {
+  height: 100vh;
+  padding: 1rem 1rem 0.5rem;
+  grid-area: 1/1/2/2;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 390px 1fr 390px;
+  grid-template-areas:
+    'author heading button'
+    '... ... ...'
+    'title links links';
+  align-items: center;
+  align-content: space-between;
+
+  pointer-events: none;
+  z-index: 100;
+  font-size: 1.5rem;
+}
+
+.frame__button {
+  grid-area: button;
+  justify-self: end;
+}
+
+.frame__button__menu {
+  width: 64px;
+  height: 64px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--color-button-menu);
+  border-radius: 50%;
+  fill: var(--color-button-menu);
+  pointer-events: auto;
+}
+
+.frame__button__menu:hover {
+  fill: var(--color-button-menu-hover);
+  border-color: var(--color-button-menu-hover);
+}
+
+.frame__title {
+  grid-area: title;
+  align-self: flex-end;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.frame__links {
+  grid-area: links;
+  align-self: flex-end;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.frame__links a {
+  pointer-events: auto;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.frame__links a::before {
+  content: ' ';
+  position: absolute;
+  top: 90%;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: 0%;
+  transition: transform 0.3s;
+}
+
+.frame__links a:hover::before {
+  transform-origin: 100%;
+  transform: scaleX(0);
+}
+
+.frame__author {
+  grid-area: author;
+  pointer-events: auto;
+}
+
+.frame__heading {
+  grid-area: heading;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.frame__heading__main {
+  color: var(--color-heading-main);
+  font-size: 2.15rem;
+  line-height: 0.8;
+}
+
+.frame__heading__sub {
+  color: var(--color-heading-sub);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* 
+CONTENT
+*/
+.content {
+  width: 100vw;
+  height: 100vh;
+  grid-area: 1/1/2/2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content__title {
+}
