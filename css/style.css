@@ -144,6 +144,8 @@ FRAME
   grid-area: heading;
   text-align: center;
   white-space: nowrap;
+  display: flex;
+  flex-direction: column;
 }
 
 .frame__heading__main {
@@ -172,4 +174,29 @@ CONTENT
 }
 
 .content__title {
+  margin-top: 10vw;
+  cursor: default;
+  font-size: 7.5vw;
+  font-weight: 400;
+  line-height: 0.75;
+  text-align: center;
+}
+
+.content__title__main,
+.content__title__sub {
+  display: block;
+  will-change: opacity, transform;
+}
+
+.content__title__main {
+  font-size: 23vw;
+}
+
+.content__button__enter {
+  margin-top: 4vh;
+  transition: transform 0.5s ease;
+}
+
+.content__button__enter:hover {
+  transform: translateX(15px) rotate(-40deg);
 }
