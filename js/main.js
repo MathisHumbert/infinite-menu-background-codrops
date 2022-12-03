@@ -19,7 +19,6 @@ const tilesLineImg = document.querySelectorAll('.tiles__line__img');
 const init = () => {
   const imgLoaded = imagesLoaded(tilesLineImg, { background: true });
 
-  console.log(imgLoaded.images.length);
   imgLoaded.on('done', () => {
     document.body.classList.remove('loading');
   });
