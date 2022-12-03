@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import imagesLoaded from 'imagesloaded';
 
 const openButton = document.querySelector('.content__button__enter');
 const closeButton = document.querySelector('.frame__button__menu');
@@ -13,10 +14,21 @@ const frame = document.querySelector('.frame');
 const menuWrapper = document.querySelector('.menu__wrapper');
 const menuItems = document.querySelectorAll('.menu__item');
 
-let isMenuOpen = false;
+const tilesLineImg = document.querySelectorAll('.tiles__line__img');
+
+const init = () => {
+  const imgLoaded = imagesLoaded(tilesLineImg, { background: true });
+
+  console.log(imgLoaded.images.length);
+  imgLoaded.on('done', () => {
+    document.body.classList.remove('loading');
+  });
+};
+
+init();
 
 const onEnter = () => {
-  const tl = gsap.timeline({ onComplete: () => (isMenuOpen = true) });
+  const tl = gsap.timeline();
 
   tl.set(overlayPath, {
     attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' },
@@ -68,8 +80,7 @@ const onEnter = () => {
 };
 
 const onLeave = () => {
-  if (!isMenuOpen) return;
-  const tl = gsap.timeline({ onComplete: () => (isMenuOpen = false) });
+  const tl = gsap.timeline();
 
   tl.set(overlayPath, {
     attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' },
