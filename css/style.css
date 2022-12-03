@@ -105,6 +105,9 @@ FRAME
   border: 1px solid var(--color-button-menu);
   border-radius: 50%;
   fill: var(--color-button-menu);
+}
+
+.menu--open .frame__button__menu {
   pointer-events: auto;
 }
 
@@ -278,4 +281,48 @@ MENU
 
 .menu__item:hover .menu__item__text {
   color: var(--color-menu-hover);
+}
+
+.tiles {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0) rotate(22.5deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tiles__line {
+  display: flex;
+  transform: translateX(25%);
+  animation: runner 10s linear infinite;
+}
+
+.tiles__line:nth-child(2) {
+  animation-duration: 16s;
+}
+
+.tiles__line:nth-child(3) {
+  animation-duration: 22s;
+}
+
+.tiles__line__img {
+  width: 30vh;
+  height: 30vh;
+  border-radius: 50%;
+  margin: 3vw;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.tiles__line__img--large {
+  width: 100vh;
+  border-radius: 20vh;
+}
+
+@keyframes runner {
+  to {
+    transform: translate(-25%);
+  }
 }
